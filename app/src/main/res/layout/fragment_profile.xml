@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gradient"
+    tools:context=".fragmentMenu.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/profile_picture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/user" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_picture"
+        android:layout_centerHorizontal="true"
+        android:text="John Doe"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_name"
+        android:layout_centerHorizontal="true"
+        android:text="johndoe@email.com"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/profile_email"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_sale" />
+
+    <Button
+        android:id="@+id/btn_new"
+        android:layout_width="391dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/divider"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#E3E0E0"
+        android:drawableLeft="@drawable/ic_baseline_border_color_24"
+        android:text="Мои записи"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/divider"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="#E3E0E0"
+        android:drawableLeft="@drawable/card_membership"
+        android:text="Услуги и Абонементы"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-253dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="39dp"
+        android:backgroundTint="#E3E0E0"
+        android:drawableLeft="@drawable/exit"
+        android:text="Выход"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/profile_email"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#E3E0E0"
+        android:drawableLeft="@drawable/bookmark"
+        android:text="Полезные материалы"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/about_fit"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/profile_email"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="#E3E0E0"
+        android:drawableLeft="@drawable/comment"
+        android:text="о Фитнес-клубе"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</RelativeLayout>
