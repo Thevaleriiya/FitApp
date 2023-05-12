@@ -93,7 +93,6 @@ public class PageFragment extends Fragment {
         String timeStamp = new SimpleDateFormat("dd").format(c.getTime());
         int week = c.get(Calendar.DAY_OF_WEEK);
         int myweek = (week+5)%7;
-        Log.d("MyTag", Integer.toString(myweek));
         for (int i=0; i<7; i++){
             Calendar cc = Calendar.getInstance();
             cc.add(cc.DATE,(posotionView-1)*7);
@@ -101,12 +100,10 @@ public class PageFragment extends Fragment {
                 cc.add(cc.DATE, -(myweek)+i);
                 String mydate = new SimpleDateFormat("dd").format(cc.getTime());
                 tabLayout.getTabAt(i).setText(mydate);
-                Log.d("MyTag1", mydate);
             }else{
                 cc.add(cc.DATE, i+1);
                 String mydate = new SimpleDateFormat("dd").format(cc.getTime());
                 tabLayout.getTabAt(i).setText(mydate);
-                Log.d("MyTag3", mydate);
             }
         }
         if (posotionView==1){
