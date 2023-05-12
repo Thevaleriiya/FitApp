@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.fitnessapp.R;
 import com.example.fitnessapp.adapters.calendar.SwipeAdapter;
@@ -22,15 +23,18 @@ public class CalendarFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+    private Integer maxView = 4;
+    private Integer minView = 0;
     SwipeAdapter swipeAdapter;
 
+    private Button btnnext;
+    private Button btnback;
     private ViewPager2 viewPag;
     private RecyclerView recuclerPage;
 
     public CalendarFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -45,14 +49,54 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         init(view);
-        swipeAdapter = new SwipeAdapter(getChildFragmentManager(),getLifecycle());
+        //init(view);
+        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), getLifecycle());
         Log.d("MyTag", swipeAdapter.toString());
         viewPag.setAdapter(swipeAdapter);
-        //viewPag.setUserInputEnabled(false);
+        if (viewPag.getCurrentItem()==minView){
+            //btnback.setVisibility(View.INVISIBLE);
+        }else{
+            btnback.setVisibility(View.VISIBLE);
+        }
+        if (viewPag.getCurrentItem()==maxView){
+            btnnext.setVisibility(View.INVISIBLE);
+        }else{
+            btnnext.setVisibility(View.VISIBLE);
+        }
+        btnnext.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (viewPag.getCurrentItem()!=4){
+                            viewPag.setCurrentItem(viewPag.getCurrentItem()+1);
+                            Log.d("aaa", "aaa");
+                        }
+
+                    }
+                }
+
+        );
+        btnback.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (viewPag.getCurrentItem()!=0){
+                            viewPag.setCurrentItem(viewPag.getCurrentItem()-1);
+                            Log.d("aaa", "aaa");
+                        }
+
+                    }
+                }
+
+        );
+        //новый тег
+        viewPag.setUserInputEnabled(false);
         return view;
     }
 
-    private void init(View view){
+    private void init(View view) {
+        btnback= view.findViewById(R.id.button_back);
+        btnnext= view.findViewById(R.id.button_next);
         viewPag = view.findViewById(R.id.calendar_view_pager_id);
     }
 }

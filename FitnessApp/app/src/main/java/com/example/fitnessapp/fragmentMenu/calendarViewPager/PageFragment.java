@@ -109,5 +109,8 @@ public class PageFragment extends Fragment {
                 Log.d("MyTag3", mydate);
             }
         }
+        if (posotionView==1){
+            tabLayout.getTabAt(myweek).select();
+        }
     }
 }
