@@ -61,10 +61,11 @@ public class PageinViewPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pagein_view_page, container, false);
-        Log.d("Mytag Positon = ", Integer.toString(weekPosotion));
-
         firebaseDatabase = FirebaseDatabase.getInstance();
         reference = FirebaseDatabase.getInstance().getReference("raspisanie");
+        if (weekPosotion==null){
+            weekPosotion=0;
+        }
         reference.child(Integer.toString(weekPosotion)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

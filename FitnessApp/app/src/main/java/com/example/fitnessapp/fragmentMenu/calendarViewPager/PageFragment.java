@@ -30,6 +30,7 @@ public class PageFragment extends Fragment {
     private TextView txtV;
     private ViewPager2 viewPag;
     private TabLayout tabLayout;
+    private TextView monthRasp;
 
     public PageFragment() {
         // Required empty public constructor
@@ -86,28 +87,39 @@ public class PageFragment extends Fragment {
     private void init(View view){
         viewPag = view.findViewById(R.id.fragment_page_view_page_id);
         tabLayout = view.findViewById(R.id.tabLayout);
+        monthRasp = view.findViewById(R.id.calendar_view_page_fragm_txt_id);
     }
 
     private void setData(View view){
         Calendar c = Calendar.getInstance();
+        c.add(c.DATE,(posotionView-1)*7);
+        String[] monthNames = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+        String month = monthNames[c.get(Calendar.MONTH)];
+
         String timeStamp = new SimpleDateFormat("dd").format(c.getTime());
+        String date_month = new SimpleDateFormat("mm").format(c.getTime());
         int week = c.get(Calendar.DAY_OF_WEEK);
         int myweek = (week+5)%7;
         for (int i=0; i<7; i++){
             Calendar cc = Calendar.getInstance();
             cc.add(cc.DATE,(posotionView-1)*7);
-            if (i<=myweek){
-                cc.add(cc.DATE, -(myweek)+i);
-                String mydate = new SimpleDateFormat("dd").format(cc.getTime());
-                tabLayout.getTabAt(i).setText(mydate);
-            }else{
-                cc.add(cc.DATE, i+1);
-                String mydate = new SimpleDateFormat("dd").format(cc.getTime());
-                tabLayout.getTabAt(i).setText(mydate);
-            }
+            cc.add(cc.DATE, -(myweek)+i);
+            String mydate = new SimpleDateFormat("dd").format(cc.getTime());
+            tabLayout.getTabAt(i).setText(mydate);
+//            if (i<=myweek){
+//                cc.add(cc.DATE, -(myweek)+i);
+//                String mydate = new SimpleDateFormat("dd").format(cc.getTime());
+//                tabLayout.getTabAt(i).setText(mydate);
+//            }else{
+//                cc.add(cc.DATE, i+1);
+//                String mydate = new SimpleDateFormat("dd").format(cc.getTime());
+//                tabLayout.getTabAt(i).setText(mydate);
+//            }
         }
         if (posotionView==1){
             tabLayout.getTabAt(myweek).select();
+            monthRasp.setText(month);
         }
+        monthRasp.setText(month);
     }
 }
