@@ -91,6 +91,7 @@ public class PageFragment extends Fragment {
     }
 
     private void setData(View view){
+       // Calendar c = Calendar.getInstance();
         Calendar c = Calendar.getInstance();
         c.add(c.DATE,(posotionView-1)*7);
         String[] monthNames = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
