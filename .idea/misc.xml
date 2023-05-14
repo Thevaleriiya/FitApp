@@ -11,6 +11,7 @@
         <entry key="..\:/FitnessApp/app/src/main/res/drawable/comment.xml" value="0.2265" />
         <entry key="..\:/FitnessApp/app/src/main/res/drawable/custom_edittext.xml" value="0.1955" />
         <entry key="..\:/FitnessApp/app/src/main/res/drawable/custom_pole.xml" value="0.2265" />
+        <entry key="..\:/FitnessApp/app/src/main/res/drawable/custom_rectangle.xml" value="0.213" />
         <entry key="..\:/FitnessApp/app/src/main/res/drawable/custom_sale.xml" value="0.1995" />
         <entry key="..\:/FitnessApp/app/src/main/res/drawable/cusyom_sale.xml" value="0.2265" />
         <entry key="..\:/FitnessApp/app/src/main/res/drawable/gray_button_background.xml" value="0.2265" />
@@ -30,6 +31,8 @@
         <entry key="..\:/FitnessApp/app/src/main/res/layout/activity_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/activity_service.xml" value="0.25416666666666665" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/activity_trainer_time.xml" value="0.2" />
+        <entry key="..\:/FitnessApp/app/src/main/res/layout/activity_zapis.xml" value="0.25416666666666665" />
+        <entry key="..\:/FitnessApp/app/src/main/res/layout/calendar_view_recycle_item.xml" value="0.25416666666666665" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/fragment_buy.xml" value="0.4" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/fragment_calendar.xml" value="0.4" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/fragment_coach.xml" value="0.2" />
@@ -39,6 +42,7 @@
         <entry key="..\:/FitnessApp/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/fragment_shop.xml" value="0.16770833333333332" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/item_service.xml" value="0.253125" />
+        <entry key="..\:/FitnessApp/app/src/main/res/layout/item_time_slot.xml" value="0.190625" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/items_trainers.xml" value="0.264" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/row_item_card.xml" value="0.253125" />
         <entry key="..\:/FitnessApp/app/src/main/res/layout/row_item_sale.xml" value="0.25416666666666665" />

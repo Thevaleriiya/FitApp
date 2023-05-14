@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser cUser = mAuth.getCurrentUser();
         if (cUser != null){
-            Intent i = new Intent(MainActivity.this, MenuActivity.class);
-            startActivity(i);
+           Intent i = new Intent(MainActivity.this, MenuActivity.class);
+           startActivity(i);
             Toast.makeText(MainActivity.this, "Пользователь найден", Toast.LENGTH_LONG).show();
         }else {
             Toast.makeText(MainActivity.this, "Пользователь не найден", Toast.LENGTH_LONG).show();

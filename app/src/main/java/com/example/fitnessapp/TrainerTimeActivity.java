@@ -2,14 +2,17 @@ package com.example.fitnessapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class TrainerTimeActivity extends AppCompatActivity {
 
     TextView nameRzd;
     TextView surname, name, about;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class TrainerTimeActivity extends AppCompatActivity {
         surname = findViewById(R.id.textView3);
         name = findViewById(R.id.textView4);
         about = findViewById(R.id.opisanieTr);
+        btn = findViewById(R.id.chooseTime);
 
         String putName = getIntent().getStringExtra("name");
         String putSurname = getIntent().getStringExtra("surname");
@@ -32,6 +36,14 @@ public class TrainerTimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TrainerTimeActivity.this,ZapisActivity.class);
+                startActivity(intent);
             }
         });
 
