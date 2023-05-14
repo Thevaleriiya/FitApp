@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class BuyFragment extends DialogFragment {
+public class  BuyFragment extends DialogFragment {
 
     String name,srok,time,zamorozka,price;
     TextView name_tv,srok_tv,time_tv,zamorozka_tv;

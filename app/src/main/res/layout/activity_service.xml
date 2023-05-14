@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/name_razdel"
         android:layout_width="match_parent"
-        android:layout_height="37dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/arrow_left"
         android:drawablePadding="8dp"
