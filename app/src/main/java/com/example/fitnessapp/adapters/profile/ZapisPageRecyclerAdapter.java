@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitnessapp.R;
+import com.example.fitnessapp.adapters.ServiceAdapter;
 import com.example.fitnessapp.classes.Service;
 import com.example.fitnessapp.classes.Trainer;
 import com.example.fitnessapp.classes.UserUslugi;
@@ -30,9 +31,16 @@ public class ZapisPageRecyclerAdapter extends RecyclerView.Adapter<ZapisPageRecy
     ArrayList<Trainer> trenerList;
     Context context;
 
-    public ZapisPageRecyclerAdapter(ArrayList<UserZapis> uslugiList, ArrayList<Trainer> serviceList) {
+    public interface OnStateClickListener{
+        void onStateClick(UserZapis service, int position);
+    }
+
+    private final ZapisPageRecyclerAdapter.OnStateClickListener onClickListener;
+
+    public ZapisPageRecyclerAdapter(ArrayList<UserZapis> uslugiList, ArrayList<Trainer> serviceList, ZapisPageRecyclerAdapter.OnStateClickListener onClickListener) {
         this.zapisList = uslugiList;
         this.trenerList = serviceList;
+        this.onClickListener = onClickListener;
     }
 
 
@@ -55,8 +63,10 @@ public class ZapisPageRecyclerAdapter extends RecyclerView.Adapter<ZapisPageRecy
         switch (checkDate(zapisList.get(position).getData())){
             case 0:{
                 holder.date.setText("Дата: "+zapisList.get(position).getData());
-                holder.status.setText("Пройдено");
+                if (zapisList.get(position).getStatus()==1) holder.status.setText("Отменено");
+                else holder.status.setText("Пройдено");
                 holder.status.setTextColor(Color.BLACK);
+                holder.btn_otmena.setVisibility(View.INVISIBLE);
                 break;
             }
             case 1: {
@@ -64,8 +74,8 @@ public class ZapisPageRecyclerAdapter extends RecyclerView.Adapter<ZapisPageRecy
                 break;
             }
             case 2:{
-                holder.date.setText("Сегодня");
-                holder.date.setTextColor(Color.GREEN);
+                holder.date.setText("Дата: Сегодня");
+                holder.date.setTextColor(Color.DKGRAY);
                 break;
             }
             default:{
@@ -80,12 +90,16 @@ public class ZapisPageRecyclerAdapter extends RecyclerView.Adapter<ZapisPageRecy
         holder.btn_otmena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserZapis userZapis = zapisList.get(holder.getAdapterPosition());
+                onClickListener.onStateClick(userZapis, holder.getAdapterPosition());
                 holder.status.setText("Отмена");
                 holder.status.setTextColor(Color.RED);
             }
         });
 
-    } private Integer checkDate(String d2){
+    }
+
+    private Integer checkDate(String d2){
         Calendar c = Calendar.getInstance();
         String d1 = new SimpleDateFormat("d/M/yyyy").format(c.getTime());
 

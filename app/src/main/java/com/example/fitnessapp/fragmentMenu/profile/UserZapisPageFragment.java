@@ -1,5 +1,7 @@
 package com.example.fitnessapp.fragmentMenu.profile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fitnessapp.R;
+import com.example.fitnessapp.adapters.ServiceAdapter;
 import com.example.fitnessapp.adapters.profile.UslugiPageRecyclerAdapter;
 import com.example.fitnessapp.adapters.profile.ZapisPageRecyclerAdapter;
 import com.example.fitnessapp.classes.Service;
@@ -125,7 +128,15 @@ public class UserZapisPageFragment extends Fragment {
                             }
 
                         }
-                        recAdapter = new ZapisPageRecyclerAdapter(userZapisList,trenerAdapterList);
+
+                        ZapisPageRecyclerAdapter.OnStateClickListener stateClickListener = new ZapisPageRecyclerAdapter.OnStateClickListener() {
+                            @Override
+                            public void onStateClick(UserZapis usZapis, int position) {
+                                Log.d("aaaTouch = ", "Нажали на кнопку отмены");
+                            }
+                        };
+
+                        recAdapter = new ZapisPageRecyclerAdapter(userZapisList,trenerAdapterList,stateClickListener);
                         rec.setAdapter(recAdapter);
                     }
 
