@@ -54,7 +54,7 @@ public class TimeSlotCouchAdapter extends RecyclerView.Adapter<TimeSlotCouchAdap
     public void onBindViewHolder(@NonNull TimeSlotCouchAdapter.ViewHolder holder, int position) {
         String[] timeSlot = timeSlots.get(position).split(";");
         holder.timeSlot.setText(timeSlot[0]);
-        if (timeSlot[1].equals("client_id")){
+        if (!timeSlot[1].equals("client_id")){
             holder.cons.setAlpha(0.6f);
         }
         holder.cons.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,10 @@ public class TimeSlotCouchAdapter extends RecyclerView.Adapter<TimeSlotCouchAdap
                                             .child("0").addListenerForSingleValueEvent(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                    UserZapis userZap = new UserZapis(dataTime,timeSlot[0],trenerID, 0);
+                                                    UserZapis userZap = new UserZapis(dataTime,timeSlot[0],
+                                                            trenerID,
+                                                            Integer.toString(dataPos)+";"+holder.getAdapterPosition() ,
+                                                            0);
                                                     referenceTwo.child(mAuth.getUid())
                                                             .child("zapis")
                                                             .child("0").child(Long.toString(snapshot.getChildrenCount())).setValue(userZap);

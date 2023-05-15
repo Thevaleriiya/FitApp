@@ -44,6 +44,7 @@ public class UserZapisPageFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference reference;
     DatabaseReference referenceTwo;
+    DatabaseReference referenceThree;
     private FirebaseAuth mAuth;
 
     private ArrayList<UserZapis> userZapisList;
@@ -83,18 +84,19 @@ public class UserZapisPageFragment extends Fragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        referenceThree = firebaseDatabase.getReference("zapic");
         referenceTwo = firebaseDatabase.getReference("trainer");
         reference = firebaseDatabase.getReference("user");
 
 
-        referenceTwo.addValueEventListener(new ValueEventListener() {
+        referenceTwo.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds1 : snapshot.getChildren()) {
                     Trainer service = ds1.getValue(Trainer.class);
                     trenerList.add(service);
                 }
-                reference.child(mAuth.getCurrentUser().getUid()).child("zapis").child(Integer.toString(positionPage)).addValueEventListener(new ValueEventListener() {
+                reference.child(mAuth.getCurrentUser().getUid()).child("zapis").child(Integer.toString(positionPage)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot ds : snapshot.getChildren()) {
@@ -116,7 +118,6 @@ public class UserZapisPageFragment extends Fragment {
 
                                     }
                                 });
-                                Log.d("aaaZachel", "gol");
                             }else{
                                 userZapisList.add(zapis);
                             }
@@ -133,6 +134,9 @@ public class UserZapisPageFragment extends Fragment {
                             @Override
                             public void onStateClick(UserZapis usZapis, int position) {
                                 Log.d("aaaTouch = ", "Нажали на кнопку отмены");
+                                String[] dayWeek = usZapis.getDay_of_week().split(";");
+                                reference.child(mAuth.getCurrentUser().getUid()).child("zapis").child("0").child(Integer.toString(position)).child("status").setValue(1);
+                                referenceThree.child(usZapis.getTrener()).child(dayWeek[0]).child("data").child(dayWeek[1]).setValue(usZapis.getTime()+";client_id");
                             }
                         };
 

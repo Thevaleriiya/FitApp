@@ -60,11 +60,18 @@ public class ZapisPageRecyclerAdapter extends RecyclerView.Adapter<ZapisPageRecy
         holder.time.setText("Время: "+zapisList.get(position).getTime());
         holder.status.setText("Вы записаны");
         holder.status.setTextColor(Color.GRAY);
+
+        if (zapisList.get(position).getStatus()==1){
+            holder.status.setText("Отменено");
+            holder.btn_otmena.setVisibility(View.INVISIBLE);
+        }
+        else {
+            holder.status.setText("Пройдено");
+        }
         switch (checkDate(zapisList.get(position).getData())){
             case 0:{
                 holder.date.setText("Дата: "+zapisList.get(position).getData());
-                if (zapisList.get(position).getStatus()==1) holder.status.setText("Отменено");
-                else holder.status.setText("Пройдено");
+
                 holder.status.setTextColor(Color.BLACK);
                 holder.btn_otmena.setVisibility(View.INVISIBLE);
                 break;
@@ -91,9 +98,12 @@ public class ZapisPageRecyclerAdapter extends RecyclerView.Adapter<ZapisPageRecy
             @Override
             public void onClick(View view) {
                 UserZapis userZapis = zapisList.get(holder.getAdapterPosition());
-                onClickListener.onStateClick(userZapis, holder.getAdapterPosition());
-                holder.status.setText("Отмена");
-                holder.status.setTextColor(Color.RED);
+                if (userZapis.getStatus()!=1){
+                    onClickListener.onStateClick(userZapis, holder.getAdapterPosition());
+                    holder.status.setText("Отменено");
+                    holder.status.setTextColor(Color.RED);
+                }
+                holder.btn_otmena.setVisibility(View.INVISIBLE);
             }
         });
 

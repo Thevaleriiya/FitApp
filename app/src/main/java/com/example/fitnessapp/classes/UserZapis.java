@@ -1,17 +1,26 @@
 package com.example.fitnessapp.classes;
 
 public class UserZapis {
-    String data, time, trener;
+    String data, time, trener, day_of_week;
     Integer status;
 
-    public UserZapis(String data, String time, String trener, Integer status) {
+    public UserZapis(String data, String time, String trener, String day_of_week, Integer status) {
         this.data = data;
         this.time = time;
         this.trener = trener;
+        this.day_of_week = day_of_week;
         this.status = status;
     }
 
     public UserZapis() {
+    }
+
+    public String getDay_of_week() {
+        return day_of_week;
+    }
+
+    public void setDay_of_week(String day_of_week) {
+        this.day_of_week = day_of_week;
     }
 
     public Integer getStatus() {
