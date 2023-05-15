@@ -102,6 +102,7 @@ public class UserZapisPageFragment extends Fragment {
                                 reference.child(mAuth.getCurrentUser().getUid()).child("zapis").child("1").addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (zapis.getStatus()==0) zapis.setStatus(2);
 
                                         reference.child(mAuth.getCurrentUser().getUid()).child("zapis").child("1").child(Long.toString(snapshot.getChildrenCount())).setValue(zapis);
                                         reference.child(mAuth.getCurrentUser().getUid()).child("zapis").child("0").child(dellUslugKey).setValue(null);
