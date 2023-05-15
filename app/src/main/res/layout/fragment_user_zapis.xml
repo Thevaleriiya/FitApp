@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/arrow_left"
             android:gravity="center"
-            android:text="Мои абонементы и услуги"
+            android:text="Мои записи"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20dp"
