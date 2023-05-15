@@ -109,7 +109,9 @@ public class ZapisActivity extends AppCompatActivity {
                         dataList.add(data);
                     }
                     if (!dataList.get(0).equals("03:00;client_id")) {
-                        dayCount.add(Integer.parseInt(ds.getKey()));
+                        Integer lastWeek = 0;
+                        if (weekTrener-myWeek>0) lastWeek = 7*(weekTrener-myWeek);
+                        dayCount.add(lastWeek+Integer.parseInt(ds.getKey()));
                         slotDateList.add(dataList);
                     }
                     Log.d("aaachekc ListData = ", dataList.get(0));

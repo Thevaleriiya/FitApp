@@ -39,14 +39,15 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Calendar calendar = Calendar.getInstance();
-        String dateZapis = new SimpleDateFormat("d/M/yyyy").format(calendar.getTime());
-        String month = calendar.getDisplayName(Calendar.MONTH,
-                Calendar.LONG_FORMAT, new Locale("ru"));
+        Log.d("aaWeekDay = ", Integer.toString(dataCount.get(position)));
 
         Calendar c = Calendar.getInstance();
         c.add(c.DATE, dataCount.get(position));
+        String dateZapis = new SimpleDateFormat("d/M/yyyy").format(c.getTime());
+        String month = c.getDisplayName(Calendar.MONTH,
+                Calendar.LONG_FORMAT, new Locale("ru"));
         String date_month = new SimpleDateFormat("d").format(c.getTime());
+        Log.d("aaWeekDay = ", dateZapis);
 
         holder.timeSlotTextView.setText(date_month+" "+month);
 
