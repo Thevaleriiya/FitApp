@@ -14,7 +14,7 @@ import com.example.fitnessapp.classes.Raspisanie;
 
 import java.util.ArrayList;
 
-public class RecycleCalendarAdapter extends RecyclerView.Adapter<RecycleCalendarAdapter.ViewHolder> {
+public class  RecycleCalendarAdapter extends RecyclerView.Adapter<RecycleCalendarAdapter.ViewHolder> {
 
     ArrayList<Raspisanie> raspisanieList;
 
@@ -22,25 +22,7 @@ public class RecycleCalendarAdapter extends RecyclerView.Adapter<RecycleCalendar
         this.raspisanieList = raspisanieList;
     }
 
-    //    public RecyclerCalendarAdapter(ArrayList<Raspisanie> saleVariants) {
-//        this.raspisanieList = saleVariants;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public RecyclerCalendarAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.calendar_view_recycle_item, parent, false);
-//        return new RecyclerCalendarAdapter.ViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull RecyclerCalendarAdapter.ViewHolder holder, int position) {
-//        Log.d("aaaa AdapterName", raspisanieList.get(position).getName());
-//        holder.name.setText(raspisanieList.get(position).getName());
-//        holder.trener_name.setText("Тренер: " + raspisanieList.get(position).getTrener_name());
-//        holder.time.setText("Время: " + raspisanieList.get(position).getTime());
-//    }
+
 
     @NonNull
     @Override

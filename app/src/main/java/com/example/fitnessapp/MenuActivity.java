@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 //import com.example.fitnessapp.databinding.ActivityMainBinding;
@@ -14,6 +15,9 @@ import com.example.fitnessapp.fragmentMenu.CoachFragment;
 import com.example.fitnessapp.fragmentMenu.ProfileFragment;
 import com.example.fitnessapp.fragmentMenu.ShopFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -24,7 +28,6 @@ public class MenuActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
 
         openFragment(new CalendarFragment());
-
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

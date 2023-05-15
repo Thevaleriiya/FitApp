@@ -55,7 +55,6 @@ public class CoachFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(requireContext(), "любой другой", Toast.LENGTH_SHORT).show();
                 arrayList.clear();
                 for (DataSnapshot ds:snapshot.getChildren()){
                     String surname = ds.child("surname").getValue(String.class);

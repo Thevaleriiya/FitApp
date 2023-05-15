@@ -107,15 +107,7 @@ public class PageFragment extends Fragment {
             cc.add(cc.DATE, -(myweek)+i);
             String mydate = new SimpleDateFormat("dd").format(cc.getTime());
             tabLayout.getTabAt(i).setText(mydate);
-//            if (i<=myweek){
-//                cc.add(cc.DATE, -(myweek)+i);
-//                String mydate = new SimpleDateFormat("dd").format(cc.getTime());
-//                tabLayout.getTabAt(i).setText(mydate);
-//            }else{
-//                cc.add(cc.DATE, i+1);
-//                String mydate = new SimpleDateFormat("dd").format(cc.getTime());
-//                tabLayout.getTabAt(i).setText(mydate);
-//            }
+
         }
         if (posotionView==1){
             tabLayout.getTabAt(myweek).select();

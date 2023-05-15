@@ -70,9 +70,6 @@ public class ServiceActivity extends AppCompatActivity {
             @Override
             public void onStateClick(Service state, int position) {
 
-                Toast.makeText(getApplicationContext(), "Был выбран пункт " + state.getName(),
-                        Toast.LENGTH_SHORT).show();
-
                 SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("name",state.getName());
@@ -82,6 +79,7 @@ public class ServiceActivity extends AppCompatActivity {
                 editor.putString("time",state.getTime());
                 editor.putString("zamorozka",state.getZamorozka());
                 editor.putString("price",state.getPrice());
+                editor.putString("number",state.getNumber());
                 editor.apply();
                 Log.d("MyTag", "Данные переданы");
                 showCustomDialog();
@@ -91,8 +89,6 @@ public class ServiceActivity extends AppCompatActivity {
         list = new ArrayList<>();
         serviceAdapter = new ServiceAdapter(this,list,stateClickListener);
         recyclerView.setAdapter(serviceAdapter);
-
-        Toast.makeText(ServiceActivity.this,"Клик пик", Toast.LENGTH_SHORT).show();
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,13 +111,6 @@ public class ServiceActivity extends AppCompatActivity {
     private void showCustomDialog() {
         BuyFragment byFragm = new BuyFragment();
         byFragm.show(getSupportFragmentManager(), "MyFragments");
-//        dialog.setContentView(R.layout.fragment_buy);
-//        Log.d("MyTag","123424234");
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.setCancelable(true);
-//        dialog.show();
-//
-//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_buy, new BuyFragment()).addToBackStack(null).commit();
     }
 
     @Override

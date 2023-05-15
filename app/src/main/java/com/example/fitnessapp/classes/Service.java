@@ -8,6 +8,7 @@ public class Service {
     String visit;
     String price;
     String zamorozka;
+    String number;
 
     public Service(String id, String name, String srok, String time, String visit, String price, String zamorozka) {
         this.id = id;
@@ -20,6 +21,14 @@ public class Service {
     }
 
     public Service() {}
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public String getId() {
         return id;

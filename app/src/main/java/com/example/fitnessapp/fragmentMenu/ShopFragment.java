@@ -46,7 +46,6 @@ public class ShopFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(requireContext(),numberFun[+position], Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(requireContext(), ServiceActivity.class);
                 intent.putExtra("pos",numberFun[+position]);
                 startActivity(intent);

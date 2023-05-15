@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_sale"
-        android:layout_width="match_parent"
-        android:layout_height="157dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_sale"
+            android:layout_width="match_parent"
+            android:layout_height="157dp" />
 
     </LinearLayout>
 
@@ -29,11 +29,11 @@
         android:textSize="30dp" />
 
     <GridView
-    android:id="@+id/grid_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:numColumns="2"
-        android:verticalSpacing="8dp"
-        android:horizontalSpacing="8dp"/>
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="8dp"
+        android:numColumns="2"
+        android:verticalSpacing="8dp" />
 
 </LinearLayout>
