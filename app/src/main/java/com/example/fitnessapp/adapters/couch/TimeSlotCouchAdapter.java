@@ -99,7 +99,7 @@ public class TimeSlotCouchAdapter extends RecyclerView.Adapter<TimeSlotCouchAdap
                                                 }
                                             });
                                 }else {
-                                    Toast.makeText(holder.itemView.getContext(), "Данное время занято",
+                                    Toast.makeText(holder.itemView.getContext(), "Время занято",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
