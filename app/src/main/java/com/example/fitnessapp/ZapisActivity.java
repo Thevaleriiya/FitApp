@@ -38,6 +38,7 @@ public class ZapisActivity extends AppCompatActivity {
 
 
     private List<ArrayList<String>> slotDateList;
+    private List<ArrayList<String>> slotDateListReshufl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class ZapisActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvZapis);
         trenerId = getIntent().getStringExtra("trener_id");
         slotDateList = new ArrayList<>();
+        slotDateListReshufl = new ArrayList<>();
         Log.d("aaachekc trenerID = ", trenerId);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -82,6 +84,7 @@ public class ZapisActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Integer> dayCount = new ArrayList<>();
+                ArrayList<Integer> dayCountReshulf= new ArrayList<>(); //сортировка
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Integer weekTrener = ds.child("week").getValue(Integer.class);
                     if (Integer.parseInt(ds.getKey()) < myDayOfWeek && weekTrener <= myWeek) {
@@ -110,11 +113,20 @@ public class ZapisActivity extends AppCompatActivity {
                     }
                     if (!dataList.get(0).equals("03:00;client_id")) {
                         Integer lastWeek = 0;
-                        if (weekTrener-myWeek>0) lastWeek = 7*(weekTrener-myWeek);
-                        dayCount.add(lastWeek+Integer.parseInt(ds.getKey()));
-                        slotDateList.add(dataList);
+                        if (weekTrener-myWeek>0){
+                            lastWeek = 7*(weekTrener-myWeek);
+                            dayCountReshulf.add(lastWeek+Integer.parseInt(ds.getKey()));
+                            slotDateListReshufl.add(dataList);
+                        }else{
+                            dayCount.add(lastWeek+Integer.parseInt(ds.getKey()));
+                            slotDateList.add(dataList);
+                        }
                     }
                     Log.d("aaachekc ListData = ", dataList.get(0));
+                }
+                for (int i = 0; i < dayCountReshulf.size(); i++) {
+                    dayCount.add(dayCountReshulf.get(i));
+                    slotDateList.add(slotDateListReshufl.get(i));
                 }
                 TimeSlotAdapter adapter = new TimeSlotAdapter(slotDateList, dayCount,trenerId);
                 recyclerView.setAdapter(adapter);

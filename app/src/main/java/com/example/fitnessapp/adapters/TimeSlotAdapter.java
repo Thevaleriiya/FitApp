@@ -40,6 +40,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d("aaWeekDay = ", Integer.toString(dataCount.get(position)));
+        Integer newPositionForAdapter = dataCount.get(position)%7;
 
         Calendar c = Calendar.getInstance();
         c.add(c.DATE, dataCount.get(position));
@@ -51,7 +52,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
 
         holder.timeSlotTextView.setText(date_month+" "+month);
 
-        TimeSlotCouchAdapter adapter = new TimeSlotCouchAdapter(timeSlots.get(position), trenerID, position, dateZapis);
+        TimeSlotCouchAdapter adapter = new TimeSlotCouchAdapter(timeSlots.get(position), trenerID, newPositionForAdapter, dateZapis);
         holder.rec.setAdapter(adapter);
     }
 
