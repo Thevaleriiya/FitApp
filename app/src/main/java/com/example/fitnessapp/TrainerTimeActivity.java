@@ -27,6 +27,7 @@ public class TrainerTimeActivity extends AppCompatActivity {
         String putName = getIntent().getStringExtra("name");
         String putSurname = getIntent().getStringExtra("surname");
         String putAbout = getIntent().getStringExtra("about");
+        String trenerId= getIntent().getStringExtra("trener_id");
 
         name.setText(putName);
         surname.setText(putSurname);
@@ -43,6 +44,7 @@ public class TrainerTimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TrainerTimeActivity.this,ZapisActivity.class);
+                intent.putExtra("trener_id",trenerId);
                 startActivity(intent);
             }
         });

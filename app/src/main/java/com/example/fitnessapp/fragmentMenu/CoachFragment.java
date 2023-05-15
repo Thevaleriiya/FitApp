@@ -88,6 +88,7 @@ public class CoachFragment extends Fragment {
                 intent.putExtra("surname",trainer.getSurname());
                 intent.putExtra("name",trainer.getName());
                 intent.putExtra("about",trainer.getAbout());
+                intent.putExtra("trener_id",trainer.getId());
                 startActivity(intent);
             }
         });
