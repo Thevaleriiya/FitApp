@@ -84,13 +84,13 @@ public class ZapisActivity extends AppCompatActivity {
                 ArrayList<Integer> dayCount = new ArrayList<>();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Integer weekTrener = ds.child("week").getValue(Integer.class);
-                    if (Integer.parseInt(ds.getKey())<myDayOfWeek && weekTrener<=myWeek){
-                        reference.child(trenerId).child(ds.getKey()).child("week").setValue(myWeek+1);
+                    if (Integer.parseInt(ds.getKey()) < myDayOfWeek && weekTrener <= myWeek) {
+                        reference.child(trenerId).child(ds.getKey()).child("week").setValue(myWeek + 1);
                         referenceTwo.child(trenerId).child(ds.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                 ArrayList<String> trenerListData = new ArrayList<>();
-                                for (DataSnapshot ds1 : snapshot1.getChildren()){
+                                for (DataSnapshot ds1 : snapshot1.getChildren()) {
                                     String data = ds1.getValue(String.class);
                                     trenerListData.add(data);
                                 }
@@ -104,26 +104,25 @@ public class ZapisActivity extends AppCompatActivity {
                         });
                     }
                     ArrayList<String> dataList = new ArrayList<>();
-                    for (DataSnapshot ds1 : ds.child("data").getChildren()){
+                    for (DataSnapshot ds1 : ds.child("data").getChildren()) {
                         String data = ds1.getValue(String.class);
                         dataList.add(data);
                     }
-                    if (!dataList.get(0).equals("03:00;client_id")){
+                    if (!dataList.get(0).equals("03:00;client_id")) {
                         dayCount.add(Integer.parseInt(ds.getKey()));
                         slotDateList.add(dataList);
                     }
                     Log.d("aaachekc ListData = ", dataList.get(0));
                 }
-                TimeSlotAdapter adapter = new TimeSlotAdapter(slotDateList, dayCount);
+                TimeSlotAdapter adapter = new TimeSlotAdapter(slotDateList, dayCount,trenerId);
                 recyclerView.setAdapter(adapter);
-
-
 
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
                 Log.d("aacheckService", "no");
             }
         });

@@ -27,12 +27,12 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
 
-        Calendar c = Calendar.getInstance();
-        int week = c.get(Calendar.WEEK_OF_YEAR);
-        c.add(c.WEEK_OF_YEAR, 40);
-        String date_month = new SimpleDateFormat("d/M/yyyy").format(c.getTime());
-        Log.d("aaacheck Nedel = ", Integer.toString(week));
-        Log.d("aaacheck date = ", date_month);
+//        Calendar c = Calendar.getInstance();
+//        int week = c.get(Calendar.WEEK_OF_YEAR);
+//        c.add(c.WEEK_OF_YEAR, 40);
+//        String date_month = new SimpleDateFormat("d/M/yyyy").format(c.getTime());
+//        Log.d("aaacheck Nedel = ", Integer.toString(week));
+//        Log.d("aaacheck date = ", date_month);
 
         openFragment(new CalendarFragment());
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

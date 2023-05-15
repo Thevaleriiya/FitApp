@@ -1,5 +1,6 @@
 package com.example.fitnessapp.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +16,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHolder>{
     private  List<ArrayList<String>> timeSlots;
     private ArrayList<Integer> dataCount;
+    private String trenerID;
 
-    public TimeSlotAdapter( List<ArrayList<String>> timeSlots, ArrayList<Integer> dataCount) {
+    public TimeSlotAdapter( List<ArrayList<String>> timeSlots, ArrayList<Integer> dataCount, String trenerId) {
         this.timeSlots = timeSlots;
         this.dataCount = dataCount;
+        this.trenerID = trenerId;
     }
 
     @NonNull
@@ -35,14 +39,18 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Calendar calendar = Calendar.getInstance();
+        String dateZapis = new SimpleDateFormat("d/M/yyyy").format(calendar.getTime());
+        String month = calendar.getDisplayName(Calendar.MONTH,
+                Calendar.LONG_FORMAT, new Locale("ru"));
 
         Calendar c = Calendar.getInstance();
         c.add(c.DATE, dataCount.get(position));
-        String date_month = new SimpleDateFormat("d/M/yyyy").format(c.getTime());
+        String date_month = new SimpleDateFormat("d").format(c.getTime());
 
-        holder.timeSlotTextView.setText(date_month);
+        holder.timeSlotTextView.setText(date_month+" "+month);
 
-        TimeSlotCouchAdapter adapter = new TimeSlotCouchAdapter(timeSlots.get(position));
+        TimeSlotCouchAdapter adapter = new TimeSlotCouchAdapter(timeSlots.get(position), trenerID, position, dateZapis);
         holder.rec.setAdapter(adapter);
     }
 
