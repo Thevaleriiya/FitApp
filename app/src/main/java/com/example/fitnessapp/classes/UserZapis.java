@@ -2,14 +2,24 @@ package com.example.fitnessapp.classes;
 
 public class UserZapis {
     String data, time, trener;
+    Integer status;
 
-    public UserZapis(String data, String time, String trener) {
+    public UserZapis(String data, String time, String trener, Integer status) {
         this.data = data;
         this.time = time;
         this.trener = trener;
+        this.status = status;
     }
 
     public UserZapis() {
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getData() {
